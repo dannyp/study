@@ -1,6 +1,3 @@
-#Views
-The ambasador between the user and the controller.
-
  ##Overview
   - Contained in the `~/views` folder
   - Convention: beneath /views is a folder for each controller and view files (.cshtml if razor) for each action.
