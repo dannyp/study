@@ -6,4 +6,5 @@ Scaffolding won't build an entire application but it will do the boring file cre
 can fill in the specific business logic yourself.
 
 ###Options
-*Empty Controller*
+_Empty Controller_
+
