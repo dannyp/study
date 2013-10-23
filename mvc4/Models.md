@@ -31,16 +31,25 @@
 ### DbContext Class
  - The gateway to the database.
  - One or more DbSet<Model> properties. Where Model is the type you wish to persist.
- - 
  
- ### Lazy Loading and N + 1
+ 
+### Lazy Loading and N + 1
   - Use the Include method if you're going to be even thinking about displaying related data.
   - Lazy loading may result in a whole separate query to the DB for each item in a list. So that would be 1 query to get the list and 1 queyr for every item in a list. Yikes.
   
- ### Database Initialisers
+### Database Initialisers
   - Allows EF to recreate an existing database, either everytime the app starts or only on changes in the model.
   - You choose the strategy when you call `SetInitializer()` of EF's Database class.
   - Obviously this is only recommended for development stages where things change prapidly.
   - EF4.3 allows iterative changes to DB based on changes made to the model, so you won't always wind up losing data.
   - Database can be seedded with data by extending the default initialisers
+  
+## Model Binding
+  - Traditionally, when data is posted back to server, you would need to pull values from the request.
+  - ModelBinding is generic code which matches input names in posted data to property names of parameters (or param names themselves).
+  - ModelBinder uses ValueProviders to search different areas of the request.
+  
+  ### Explicit Model Binding
+  - Implicit model binding (above) is invoked when you have an action with a parameter.
+  - ModelBinding can be explicitly invoked using TryUpdateModel() and UpdateModel calls.
   
