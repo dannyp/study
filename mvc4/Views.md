@@ -40,4 +40,9 @@ The ambasador between the user and the controller.
   
  ## Layouts
   - They are master pages.
-  - Use combination of `@RenderBody()` and `@RenderSection("Footer")` to insert content.
+  - Use combination of `@RenderBody()` and `@RenderSection("Footer", required: false)` to insert content.
+  
+ ## Partial Views
+  - Partial views do not specify a layout.
+  - Return from controller with `PartialView(model)` or from within another view itself `@Html.Partial(model)`
+  - Useful when returning HTML to an ajax request.
