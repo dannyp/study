@@ -1,0 +1,127 @@
+#Implement and Manupulate Doc Structure
+
+- In general, use the HTML DOM or jQuery. But, it is important to understand the underlying APIs. 
+- jQuery helps write consise x-browser code, but understanding the underlying navtive code will help us write better jQuery.
+- the document object represents the entrire html document.
+- all elements are nodes, but not all nodes are elements (attributes are also nodes for instance)
+
+- Get element by id:
+    document.getElementById('id') ==> HTMLElement
+    $('#id') ==> jQuery object
+
+- Get all elements by tag name.
+    document.getElementsByTagName('div') ==> HTMLCollection / NodeList.
+    $('div') => jquery[]
+    
+- Get an array of elements by name (inputs)
+    documet.getElementsByName('name') ==> HTMLCollection / NodeList
+    $('[name="name"]') ==> jQuery[]
+    
+- Get an array of elements by CSS class name
+    document.getElementsByClassName('classname') ==> HTMLCollection / NodeList
+    $('.classname')  ==> jquery[]
+
+- Node traversal
+    var domNode = document.getElementById('id);
+    //parent element can be used, but not all nodes are elements (so might not have parent)
+    var domParent = domNode.parentNode;
+    //childNode may contain text, children is only elements.
+    var domFirstChild = domNode.childNodes[0];
+    var domFirstElement = domNode.children[0];
+    
+    var jqNode = $('#id');
+    var jqParent = jqNode.parent();
+    var jqFirstChild = jqNode.children()[0];
+
+- Important porperties of a DOM node
+-- nodeType: integer representing the type of node. 1 = Element 2 = Attribute 3 = Text 8 = comment 9 = document
+-- nodeName: Name of the node (for tags its the name of the tag or #text for text).
+-- nodeValue: Null for elements, for text, the text itself, and for attributes its the value of the attribute.
+-- childNodes: collection of children
+-- parentNode parnet
+-- firstChild, lastChild, nextSibling, previousSibling: self-explanatory
+
+-jQuery equivalents
+    var element = $('#container');
+    var firstChild = element.children(':first');
+    var lastChild = element.children(':last');
+    var nextSibling = element.next();
+    var previousSibling = element.prev();
+- Element nodes may have one of more attributes. To acces them the attributes member is used. They're not considered children
+    var div document.getElementById("id").attribues;
+    //there is no jQuery equivalent.
+  
+- Get and set attributes
+    var div = document.getElementById('myid');
+    var val = div.attributes['id'].value; // = "myid"
+    val = div.getAttribute('id');
+    var valNode = div.getAttributeNode('id');
+    div.attributes['id').value = 'newIdValue';
+    div.setAttribute('id', 'newIdValue');
+    
+    var jqDiv = $('#myId');
+    var jqVal = jqDiv.attr('myId');
+    jqdDiv.attr('id', 'newIdValue');
+    
+- Check if attribute exists
+    var hasId = element.hasAttribute('id');
+    var jqHasId = (element.attr('id') !=== undefined)
+    
+- Remove
+    element.removeAttribute('id');
+    element.removeAttributeNode(element.getAttributeNode('id'));
+    
+    jqElement.removeAttr('id');
+    
+##Manipulation
+- You can change a nodes value. Tags typically don't have a value - their text child will.
+    var paragraph = document.getElementById('paragraph1')
+    paragraph.firstChild.value = 'Changed text';
+    
+    var jqParagraph = $('#paragraph1');
+    jqParagraph.text('new text');
+    
+- You can add an element to the DOM thusly
+    var newNode = document.createElement('img'); //this creates only, it hasn't been added anywhere yet
+    newNode.setAttribute('src', 'https://google.com/logo');
+    var body = documeetn.geteElementsByTagName('body')[0];
+    body.appendChild(newNode);
+    
+    $('body').append('<img src="https://google.com/logo">');
+    
+- Add inner text.
+    var par = document.getElementById('p1');
+    par.appendChild(document.createTextNode('More text'));
+    
+    // This is equally effective as the dom one.
+    $('#p1').append('More text');
+    
+- Insert before existing children (in this case the container element)
+    //... same as above to create element
+    var body = document.getElementsByTagName('body')[0];
+    body.insertBefore(element, document.getElementById('container'))
+    
+    $('#container').before('<img src="">'); // adds sibling
+    $('body').prepend('<img src="">'); //adds first child.
+
+- Insert before adds a prior sibling to the the 2nd parameter. Append childnode adds a sibling after the final child.
+- Removing
+    var body = element.getElementsByTagName('body')[0];
+    var removedElement = body.removeChild(document.getElementById('removeMe'));
+    
+    $('#removeMe').remove();
+    
+- Replace element
+    var body = element.getElementsByTagName('body')[0];
+    var newNode = document.createElement('a');
+    newNode.setAttribute('href', 'http://google.com');
+    var oldNode = document.getElementById('replaceMe');
+    body.replaceChild(oldNode, newNode);
+    
+    $('#replaceMe').replaceWith('<a href="http://google.com">');
+- You can move an element by referencing it and inserting it. It will be automatically removed from the old location.
+- jQuery offers: after, before, append, prepend, replaceWith, wrap, wrapInner and wrapAll for DOM ops.
+- all are called on the selector for the existing content with the new element as the parameter
+- insertAfter, insertBefore, appendTo, prependTo and replaceAll are targeted to the new content with the target (as a selector) for the arg.
+- the odd one out is remove() which is targeted to a selector for the content to be removed.
+    
