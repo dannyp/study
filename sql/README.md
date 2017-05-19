@@ -1,4 +1,4 @@
-#Study Guide
+# Study Guide
  9 / 10 people who know their stuff and fail because they don't pick the simplest correct answer.
 
 ## Types
@@ -7,7 +7,7 @@
  - DateTime2
  - 
 
-##DML Triggers
+## DML Triggers
  - Update tables to maintain integrity
  - Complex checks
  - Auditing
@@ -51,4 +51,9 @@
   - Join to a function, pass a parameter. Much better than subquery / doing it in the select.
   - Cross apply ~ 'inner join'
   - Outer apply ~ 'outer join'
+
+ ## CTE Common Table Expressions
+  - 'Inline views'
+  - Lets the compiler work out the best way to structure query
+  - Better structure too.
 
