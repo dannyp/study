@@ -1,0 +1,13 @@
+# Unexpected Exam Topics to Revise
+- [ ] Instead of on a view
+- [ ] <string column>.WRITE
+- [ ] XML output matched to command
+- [ ] Optimisation and table/query hints
+- [ ] XACT_STATE()
+- [ ] @@ERROR, @@ROWCOUNT, IIF(TRY_PARSE
+- [ ] Lots of windowing functions - RANK, DENSE\_RANK, NTILE, ROW\_NUMBER
+- [ ] CUBE, ROLLUP, GROUPING SETS -> output
+- [ ] 1 Merge statement to build from chunks, one UNION
+- [ ] Use a UDF as a computed column
+- [ ] Datatypes applicable to scenario (eg I'm storing a currency converted amount to 5 decimal places...)
+- [ ] Declare xml variable with schema.
